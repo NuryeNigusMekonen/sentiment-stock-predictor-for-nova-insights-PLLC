@@ -12,4 +12,21 @@ Data/yfinance_data/*.csv
 Data/raw_analyst_ratings.csv
 Data/preprocessed_news.csv
 
+*.csv
+
+yfinance_data/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+nova-venv/
+Data/*.zip
+Data/*.tar.gz
+Data/*.exe
+Data/*.bin
+Data/*.csv
+Data/yfinance_data/*.csv
+Data/raw_analyst_ratings.csv
+Data/preprocessed_news.csv
+
+*.csv
 
