@@ -5,5 +5,8 @@ __pycache__/
 .ipynb_checkpoints/
 nova-venv/
 *.csv
-data/
-
+Data/
+*.zip
+*.tar.gz
+*.exe
+*.bin
