@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     strategy:
@@ -28,13 +28,16 @@ jobs:
         sudo apt-get install -y build-essential wget
         wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz
         tar -xzf ta-lib-0.4.0-src.tar.gz
-        cd ta-lib/
-        ./configure --prefix=/usr
+        cd ta-lib
+        ./configure --prefix=/usr/local
         make
         sudo make install
+        echo "/usr/local/lib" | sudo tee -a /etc/ld.so.conf.d/ta-lib.conf
+        sudo ldconfig
 
     - name: Install Python dependencies
       run: |
+        export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
