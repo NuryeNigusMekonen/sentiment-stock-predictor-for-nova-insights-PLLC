@@ -1,32 +1,18 @@
-yfinance_data/
+# Virtual environment
+nova-venv/
+
+# Python artifacts
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
-nova-venv/
-Data/*.zip
-Data/*.tar.gz
-Data/*.exe
-Data/*.bin
-Data/*.csv
-Data/yfinance_data/*.csv
-Data/raw_analyst_ratings.csv
-Data/preprocessed_news.csv
 
+# Data files
 *.csv
+*.zip
+*.tar.gz
+*.exe
+*.bin
 
+# Specific data folders/files
+Data/yfinance_data/
 yfinance_data/
-__pycache__/
-*.pyc
-.ipynb_checkpoints/
-nova-venv/
-Data/*.zip
-Data/*.tar.gz
-Data/*.exe
-Data/*.bin
-Data/*.csv
-Data/yfinance_data/*.csv
-Data/raw_analyst_ratings.csv
-Data/preprocessed_news.csv
-
-*.csv
-
