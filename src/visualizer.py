@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib
 
 def plot_trade_signals(df, stock_name="Stock"):
        #Plot Adj Close with Buy (green arrow) and Sell (red arrow) signals.
@@ -20,7 +21,9 @@ def plot_trade_signals(df, stock_name="Stock"):
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.show()
+    
+    if matplotlib.get_backend() != "agg":
+        plt.show()
 
 def plot_indicators(df, stock_name):
     try:
@@ -45,7 +48,10 @@ def plot_indicators(df, stock_name):
         plt.legend()
 
         plt.tight_layout()
-        plt.show()
+
+        
+        if matplotlib.get_backend() != "agg":
+            plt.show()
 
     except Exception as e:
         print(f"Plotting failed for {stock_name}: {e}")
