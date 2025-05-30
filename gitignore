@@ -17,3 +17,8 @@ __pycache__/
 Data/yfinance_data/
 yfinance_data/
 ##
+# Ignore virtual environment
+nova-venv/
+
+# Ignore all Data files
+Data/
