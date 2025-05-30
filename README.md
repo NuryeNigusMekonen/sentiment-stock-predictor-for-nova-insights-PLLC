@@ -48,7 +48,7 @@ sentiment-stock-predictor-for-nova-insights-PLLC/
 │   ├── test_generate_signals.py
 │   └── test_visualizer.py
 │
-└── README.md                   # ← You are here
+└── README.md                   
 ```
 
 ---
