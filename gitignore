@@ -14,5 +14,6 @@ __pycache__/
 *.bin
 
 # Specific data folders/files
+
 Data/yfinance_data/
 yfinance_data/
