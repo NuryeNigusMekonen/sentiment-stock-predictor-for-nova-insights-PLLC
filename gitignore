@@ -1,19 +1,31 @@
 # Virtual environment
 nova-venv/
+venv/
+.env/
 
-# Python artifacts
+# Python cache
 __pycache__/
 *.pyc
+*.pyo
+
+# Jupyter notebooks
 .ipynb_checkpoints/
 
-# Data files
+# System files
+.DS_Store
+Thumbs.db
+
+# Data dumps
 *.csv
-*.zip
-*.tar.gz
-*.exe
-*.bin
+*.xls
+*.xlsx
+*.tsv
+*.parquet
 
-# Specific data folders/files
+# TA-Lib or compiled junk
+*.so
+*.dll
+*.dylib
 
-Data/yfinance_data/
-yfinance_data/
+# Logs or misc
+*.log
