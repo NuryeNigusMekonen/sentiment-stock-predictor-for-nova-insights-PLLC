@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #  Sentiment-Stock-Predictor-for-Nova-Insights-PLLC
 
 An AI-powered financial analytics platform that combines **natural language processing** of financial news with **technical analysis** of stock data to generate insightful trading signals.
@@ -164,3 +165,7 @@ Nurye Nigus - Electrical and software engineer
 
 ##  Next Steps (Coming Soon)
 
+=======
+# sentiment-stock-predictor-for-nova-insights-PLLC
+predicting the price of stock based on news - sentiment analysis 
+>>>>>>> 47395aafd7e6f46ef863cf86185b0780f6bdc583
