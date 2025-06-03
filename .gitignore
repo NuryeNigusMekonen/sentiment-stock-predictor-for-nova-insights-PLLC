@@ -1,1 +1,26 @@
-Data/*.csv
+# Virtual environment
+nova-venv/
+
+# Python artifacts
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Data files
+*.csv
+*.zip
+*.tar.gz
+*.exe
+*.bin
+
+# Specific data folders/files
+Data/yfinance_data/
+yfinance_data/
+Data/filtered
+##
+# Ignore virtual environment
+nova-venv/
+
+# Ignore all Data files
+Data/
+##

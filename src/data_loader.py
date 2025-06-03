@@ -53,3 +53,14 @@ def load_stock_data(filepath): #used to import single csv file
     df.drop(columns=["Dividends", "Stock Splits"], inplace=True, errors="ignore")
 
     return df
+def load_filtered_news(tickers, folder="../Data/filtered/"):
+    all_news = []
+    for t in tickers:
+        path = os.path.join(folder, f"{t}_filtered_news.csv")
+        if os.path.exists(path):
+            df = pd.read_csv(path)
+            df["ticker"] = t  # for consistency
+            all_news.append(df)
+        else:
+            print(f" Missing file: {path}")
+    return pd.concat(all_news, ignore_index=True)

@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import matplotlib
 import pandas as pd
-
+import seaborn as sns
 
 def plot_trade_signals(df, stock_name="Stock"):
     plt.figure(figsize=(14, 6))
@@ -68,4 +68,19 @@ def plot_indicators(df, stock_name):
 
     except Exception as e:
         print(f"Plotting failed for {stock_name}: {e}")
+def plot_sentiment_vs_returns(df, ticker):
+    df["returns"] = df["Close"].pct_change()
+    df = df.dropna(subset=["returns", "avg_sentiment"])
+    if df.empty:
+        print(f"⚠️ No valid data for {ticker}")
+        return
+
+    plt.figure(figsize=(6, 4))
+    sns.scatterplot(data=df, x="avg_sentiment", y="returns")
+    plt.title(f"{ticker} - Sentiment vs Daily Return")
+    plt.xlabel("Average Daily Sentiment")
+    plt.ylabel("Daily Return")
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
         
