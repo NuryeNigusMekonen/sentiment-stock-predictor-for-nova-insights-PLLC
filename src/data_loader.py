@@ -1,20 +1,41 @@
 import pandas as pd
 import os
 
-def load_news_data(filepath):
-    if not os.path.exists(filepath):
-        raise FileNotFoundError(f"File not found: {filepath}")
-    
-    df = pd.read_csv(filepath)
-    
-    # Ensure the 'date' column is parsed as datetime
-    if 'date' in df.columns:
-        df['date'] = pd.to_datetime(df['date'], errors='coerce')  # handles invalid formats too
-    else:
-        raise KeyError("Expected 'date' column not found in file")
+def load_stock_files(folder_path: str) -> dict:
+    """
+    Loads all stock CSV files from a folder into a dictionary.
+    Reuses the `load_stock_data()` function for consistency.
+    """
+    if not os.path.isdir(folder_path):
+        raise NotADirectoryError(f"Directory not found: {folder_path}")
+
+    stock_data = {}
+    for filename in os.listdir(folder_path):
+        if filename.endswith(".csv"):
+            ticker = filename.split("_")[0]  # assumes filenames like AAPL_historical_data.csv
+            full_path = os.path.join(folder_path, filename)
+            try:
+                df = load_stock_data(full_path)  #  Reuse your validated single loader
+                stock_data[ticker] = df
+            except Exception as e:
+                print(f" Skipped {filename}: {e}")
+
+    if not stock_data:
+        raise ValueError("No valid stock files loaded.")
+
+    return stock_data
+
+def load_news_data(news_path: str) -> pd.DataFrame:
+    if not os.path.exists(news_path):
+        raise FileNotFoundError(f"News file not found: {news_path}")
+    try:
+        df = pd.read_csv(news_path)
+        return df
+    except Exception as e:
+        raise RuntimeError(f"Failed to load news file: {e}")
     
     return df
-def load_stock_data(filepath):
+def load_stock_data(filepath): #used to import single csv file 
     if not os.path.exists(filepath):
         raise FileNotFoundError(f"File not found: {filepath}")
 

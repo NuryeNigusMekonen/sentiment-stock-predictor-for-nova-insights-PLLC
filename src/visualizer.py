@@ -1,29 +1,42 @@
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 import matplotlib
+import pandas as pd
+
 
 def plot_trade_signals(df, stock_name="Stock"):
-       #Plot Adj Close with Buy (green arrow) and Sell (red arrow) signals.
-    
     plt.figure(figsize=(14, 6))
-    plt.plot(df["Adj Close"], label="Adj Close", color="blue")
+
+    # Use proper datetime index or column as x-axis
+    x = df.index if isinstance(df.index, pd.DatetimeIndex) else df["date"]
+
+    # Plot Adj Close vs Date
+    plt.plot(x, df["Adj Close"], label="Adj Close", color="blue")
 
     # Buy markers
     buys = df[df["Buy_Signal"]]
-    plt.scatter(buys.index, buys["Adj Close"], label="Buy", marker="^", color="green", s=100)
+    plt.scatter(buys.index if isinstance(df.index, pd.DatetimeIndex) else buys["date"],
+                buys["Adj Close"], label="Buy", marker="^", color="green", s=100)
 
-        # Sell markers
+    # Sell markers
     sells = df[df["Sell_Signal"]]
-    plt.scatter(sells.index, sells["Adj Close"], label="Sell", marker="v", color="red", s=100)
+    plt.scatter(sells.index if isinstance(df.index, pd.DatetimeIndex) else sells["date"],
+                sells["Adj Close"], label="Sell", marker="v", color="red", s=100)
 
     plt.title(f"{stock_name} - Buy/Sell Signals")
     plt.xlabel("Date")
     plt.ylabel("Price")
     plt.legend()
     plt.grid(True)
-    plt.tight_layout()
-    
-    if matplotlib.get_backend() != "agg":
-        plt.show()
+
+    # Format x-axis to show only the year
+    ax = plt.gca()  # get current axis
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
+    plt.xticks(rotation=45)  # rotate if needed for better readability
+
+    plt.show()
+
+
 
 def plot_indicators(df, stock_name):
     try:
