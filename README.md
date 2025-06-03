@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #  Sentiment-Stock-Predictor-for-Nova-Insights-PLLC
 
 An AI-powered financial analytics platform that combines **natural language processing** of financial news with **technical analysis** of stock data to generate insightful trading signals.
@@ -79,7 +78,7 @@ sentiment-stock-predictor-for-nova-insights-PLLC/
 
 ---
 
-##  Task 2: Technical Indicator Analysis
+##  Task 2 and 3: Technical Indicator Analysis and corroletion analysis
 
 **Goal**: Perform quantitative analysis on stock price data to extract trading signals.
 
@@ -109,6 +108,46 @@ sentiment-stock-predictor-for-nova-insights-PLLC/
 *  Tests cover functionality, edge cases, and exception handling
 *  Run all tests with:
 
+##  Features
+
+### News Sentiment Extraction
+- Uses **TextBlob** for polarity scoring.
+- Filters news headlines to the 7 target tickers only.
+- Saves filtered sentiment per company to CSV.
+
+### Stock Data Processing
+- Loads 7 stock tickers from `yfinance`.
+- Adds RSI, MACD, MA20 using TA-Lib.
+- Computes daily returns for correlation.
+
+### Merging & Analysis
+- Matches sentiment by `ticker` and `date`.
+- Merges aligned sentiment with stock metrics.
+- Builds per-ticker datasets for all 7 companies.
+
+### Visualizations
+- Satter plots of **sentiment vs returns**.
+- Heatmaps for **correlation matrix** between:
+  - Close price
+  - Daily returns
+  - Avg sentiment
+- Buy/Sell signal overlays on price chart.
+
+### Automation & Testing
+- GitHub Actions-based CI for:
+  - Running unit tests.
+  - Installing and linking TA-Lib C library.
+- Modular test files for every component in `src/`.
+
+---
+
+##  Results & Interpretation
+
+- Moderate **positive correlation** between news sentiment and next-day return observed in companies like **AAPL** and **NVDA**.
+- **Sentiment data sparsity** on some tickers highlights real-world challenges.
+- Visual tools enabled intuitive spotting of signal-driven trading opportunities.
+
+---
 ```bash
 python -m unittest discover tests
 ```
@@ -152,20 +191,22 @@ pip install ta-lib
 
 <img src="pictures/APPL-MACD-RSI-MA20.png" width="600"/>
 <img src="pictures/keyword-frequiency.png" width="600"/>
+<img src="pictures/Corolation_AAPL.png" width="600"/>
+<img src="pictures/sentiment_return.png" width="600"/>
 
 ---
 
 ## Author
 
-**Norie**
+**Norye**
 Nurye Nigus - Electrical and software engineer
 *GitHub: [github.com/NuryeNigusMekonen](https://github.com/NuryeNigusMekonen)*
 
 ---
 
-##  Next Steps (Coming Soon)
+--
 
-=======
-# sentiment-stock-predictor-for-nova-insights-PLLC
-predicting the price of stock based on news - sentiment analysis 
->>>>>>> 47395aafd7e6f46ef863cf86185b0780f6bdc583
+
+
+
+
